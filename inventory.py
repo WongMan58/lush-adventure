@@ -3,9 +3,9 @@ import os, time
 from map import *
 
 class Inventory():
-    inventory = [["", ""]] * 8
+    inventory = [["", 0]] * 12
 
-    def addItem(item, amount): # Add amount
+    def addItem(item, amount):
         for space, space_pos in zip(Inventory.inventory, range(len(Inventory.inventory))):
             if space[0] == item:
                 Inventory.inventory[space_pos][1] += amount
@@ -13,19 +13,22 @@ class Inventory():
             elif space[0] == "":
                 Inventory.inventory[space_pos] = [item, amount]
                 break
-        time.sleep(0.1) # NOTE FOR NOW
+        time.sleep(0.1) # NOTE: FOR NOW
         
     def display():
         os.system('cls||clear')
-        print("Inventory: \n")
-        empty_count = 0
+        print("---------------------------------------")
+        print("Inventory:                     Money:")
+        print("---------------------------------------")
+        filled_count = 0
         for item in Inventory.inventory:
+            if item[0] == "":
+                print("- Empty")
             if item[0] != "":
-                print("%s x%s" % (item[0], item[1]))
-            elif item[0] == "":
-                empty_count += 1
-        if empty_count == 8:
-            print("Empty")
+                print("- %s x%s " % (item[0], item[1]))
+                filled_count += 1
+        if filled_count == len(Inventory.inventory):
+            print("\nInventory is full!")
     
     def hide():
         os.system('cls||clear')

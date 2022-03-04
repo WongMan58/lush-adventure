@@ -2,10 +2,10 @@ import random
 import math
 
 class Map:
-    full_width = 48
-    full_height = 16
-    shown_width = 48
-    shown_height = 16
+    full_width = 48 # Used for generation
+    full_height = 25 # Used for generation
+    shown_width = 48 # NOTE: This is so far unused, this will be used when map scrolling is made
+    shown_height = 16 # NOTE: This is so far unused, this will be used when map scrolling is made
     code = []
     center_width = full_width / 2
     center_height = full_height / 2
@@ -28,10 +28,10 @@ class Map:
                 if current_tile <= 170:
                     current_tile = "G"
                     single_row_code.append("1")
-                elif current_tile > 170 and current_tile < 199:
+                elif current_tile > 170 and current_tile < 197:
                     current_tile = "█"
                     single_row_code.append("2")
-                elif current_tile >= 199: 
+                elif current_tile >= 197: 
                     current_tile = "F"
                     single_row_code.append("3")
                 single_map_row.append(current_tile)

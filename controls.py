@@ -6,10 +6,12 @@ global inventoryShown
 inventoryShown = False
 
 def checkKeyboardInput():
-    Player.checkInput()
+    global inventoryShown
+    
+    if not inventoryShown:
+        Player.checkKeyboardInput()
 
     if keyboard.is_pressed('e'):
-        global inventoryShown
         if not inventoryShown:
             Inventory.display()
             inventoryShown = True
