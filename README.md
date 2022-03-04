@@ -1,6 +1,6 @@
 # The Lush Adventure
 
-The Lush Adventure is a game about collecting flower and selling them in shops for money
+The Lush Adventure is a open-source game about collecting flowers and selling them in shops for money
 
 # TODO
   - [ ] Add inventory system
