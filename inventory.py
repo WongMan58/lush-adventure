@@ -16,10 +16,15 @@ class Inventory():
         time.sleep(0.1) # NOTE FOR NOW
     def display():
         os.system('cls||clear')
-        print("Inventory: ")
+        print("Inventory: \n")
+        empty_count = 0
         for item in Inventory.inventory:
-            if item != "":
+            if item[0] != "":
                 print("%s x%s" % (item[0], item[1]))
+            elif item[0] == "":
+                empty_count += 1
+        if empty_count == 8:
+            print("Empty")
     
     def hide():
         os.system('cls||clear')
