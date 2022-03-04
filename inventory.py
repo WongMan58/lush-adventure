@@ -14,6 +14,7 @@ class Inventory():
                 Inventory.inventory[space_pos] = [item, amount]
                 break
         time.sleep(0.1) # NOTE FOR NOW
+        
     def display():
         os.system('cls||clear')
         print("Inventory: \n")

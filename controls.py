@@ -6,7 +6,7 @@ global inventoryShown
 inventoryShown = False
 
 def checkKeyboardInput():
-    Player.checkMovement()
+    Player.checkInput()
 
     if keyboard.is_pressed('e'):
         global inventoryShown
@@ -17,7 +17,3 @@ def checkKeyboardInput():
             Inventory.hide()
             inventoryShown = False
         time.sleep(0.1)
-    if keyboard.is_pressed('f'):
-        Inventory.addItem('hi', 2)
-        Inventory.addItem("hi2", 2)
-        print(Inventory.inventory)
