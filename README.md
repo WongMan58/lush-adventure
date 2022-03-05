@@ -4,7 +4,7 @@ Lush Adventure is a open-source game about collecting flowers and selling them i
 
 # TODO
   - [ ] Inventory system (50%)
-  - [ ] Rewrite project code (50%)
+  - [ ] Rewrite project code (90%)
   - [ ] Item system (10%)
   - [ ] Health system
   - [ ] Game loading
@@ -14,8 +14,8 @@ Lush Adventure is a open-source game about collecting flowers and selling them i
   - [ ] Map scrolling
   - [ ] Dungeons
   - [ ] Enemies
-  - [ ] Shops
-  - [ ] Money system (1%)
+  - [ ] Shops (About to start)
+  - [ ] Money system (About to start)
   - [ ] Water and Lava
   - [ ] Different biomes
   - [ ] NPCs 
