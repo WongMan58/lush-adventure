@@ -104,7 +104,21 @@ class Player:
             if x_row_info[player_y] == "F":
                 Inventory.addItem("Flower", 1)
                 Map.replaceObject(player_x - 1, player_y, "G")
-
+        elif player_direction == "RIGHT":
+            x_row_info = Map.map[player_x]
+            if x_row_info[player_y + 1] == "F":
+                Inventory.addItem("Flower", 1)
+                Map.replaceObject(player_x, player_y + 1, "G")
+        elif player_direction == "DOWN":
+            x_row_info = Map.map[player_x + 1]
+            if x_row_info[player_y] == "F":
+                Inventory.addItem("Flower", 1)
+                Map.replaceObject(player_x + 1, player_y, "G")
+        elif player_direction == "LEFT":
+            x_row_info = Map.map[player_x]
+            if x_row_info[player_y - 1] == "F":
+                Inventory.addItem("Flower", 1)
+                Map.replaceObject(player_x, player_y - 1, "G")
     def checkKeyboardInput():
         global player_direction
         up, right, down, left = Player.checkAround()
