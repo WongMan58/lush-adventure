@@ -1,141 +1,38 @@
-import time, keyboard, os
+import keyboard, time, os
 
 from map import *
-from inventory import *
 
-global player_costume
-global player_x # Current map column the player is in
-global player_y # Current map row the player is in
-global player_direction
+class Player():
+    x = 0
+    y = 0
+    direction = "UP"
+    costume = "@"
 
-# Set default player direction to up
-player_direction = "UP"
-
-class Player:
-    global player_costume
-
-    # Define what the player looks like
-    player_costume = "@" 
-
-    def spawn(x, y): # Create where the player will spawn when loading into the world
-        global player_x
-        global player_y
-
-        Map.generate() # The spawn function automatically generates a map first
-
-        player_x = x # Set player x position
-        player_y = y # Set player y position
-        x_row_info = list(Map.map[player_x]) # Get information about the row the player is in
-        x_row_info[player_y] = player_costume
-        x_row_info = ''.join(x_row_info)
-        Map.map[player_x] = x_row_info
-
-        os.system("cls||clear")
-        Map.display()
+    def spawn(pos_x, pos_y):
+        Map.generate()
+        Player.x = pos_x
+        Player.y = pos_y
+        Map.replace(Player.x, Player.y, Player.costume)
     
-    def checkAround(): # x is vertical, y is horizontal
-        # NOTE ORDER IS ALWAYS UP, RIGHT, DOWN AND THEN LEFT
-        up = False
-        right = False
-        down = False
-        left = False
-
-        if player_x > 0:
-            x_row_info = Map.map[player_x - 1]
-            if x_row_info[player_y] != "█":
-                up = True
-            else:
-                up = False
-        else:
-            up = False
-        
-        if player_y < (Map.full_width - 1):
-            x_row_info = Map.map[player_x]
-            if x_row_info[player_y + 1] != "█":
-                right = True
-            else:
-                right = False
-        else:
-            right = False
-        
-        if player_x < (Map.full_height - 1):
-            x_row_info = Map.map[player_x + 1]
-            if x_row_info[player_y] != "█":
-                down = True
-            else:
-                down = False
-        else:
-            down = False
-        
-        if player_y > 0:
-            x_row_info = Map.map[player_x]
-            if x_row_info[player_y - 1] != "█":
-                left = True
-            else:
-                left = False
-        else:
-            left = False
-
-        return up, right, down, left
-
-    def move(increase_x, increase_y):
-        global player_x
-        global player_y
-
-        Map.reset()
-        if increase_x != None:
-            player_y += increase_x
-        if increase_y != None:
-            player_x -= increase_y
-        
-        row_info = list(Map.map[player_x])
-        row_info[player_y] = player_costume
-        row_info = ''.join(row_info)
-        Map.map[player_x] = row_info
-
-        os.system("cls||clear")
-        Map.display()
+    def move(change_x, change_y):
+        Map.replace(Player.x, Player.y, Map.old_obj)
+        if change_x != None:
+            Player.y += change_x
+            Map.replace(Player.x, Player.y, Player.costume)
+        if change_y != None:
+            Player.x -= change_y
+            Map.replace(Player.x, Player.y, Player.costume)
         time.sleep(0.12)
-
-    def collectItem(): # REDO LATER
-        global player_direction
-        if player_direction == "UP":
-            x_row_info = Map.map[player_x - 1]
-            if x_row_info[player_y] == "F":
-                Inventory.addItem("Flower", 1)
-                Map.replaceObject(player_x - 1, player_y, "G")
-        elif player_direction == "RIGHT":
-            x_row_info = Map.map[player_x]
-            if x_row_info[player_y + 1] == "F":
-                Inventory.addItem("Flower", 1)
-                Map.replaceObject(player_x, player_y + 1, "G")
-        elif player_direction == "DOWN":
-            x_row_info = Map.map[player_x + 1]
-            if x_row_info[player_y] == "F":
-                Inventory.addItem("Flower", 1)
-                Map.replaceObject(player_x + 1, player_y, "G")
-        elif player_direction == "LEFT":
-            x_row_info = Map.map[player_x]
-            if x_row_info[player_y - 1] == "F":
-                Inventory.addItem("Flower", 1)
-                Map.replaceObject(player_x, player_y - 1, "G")
-    def checkKeyboardInput():
-        global player_direction
-        up, right, down, left = Player.checkAround()
-
-        # Check keyboard player movement
-        if up != False and (keyboard.is_pressed("up") or keyboard.is_pressed("w")):
+    
+    def checksides():
+        print("WIP")
+    
+    def checkForKeyboardInput():
+        if keyboard.is_pressed("up"):
             Player.move(None, 1)
-            player_direction = "UP"
-        if right != False and (keyboard.is_pressed("right") or keyboard.is_pressed("d")):
+        if keyboard.is_pressed("right"):
             Player.move(1, None)
-            player_direction = "RIGHT"
-        if down != False and (keyboard.is_pressed("down") or keyboard.is_pressed("s")):
+        if keyboard.is_pressed("down"):
             Player.move(None, -1)
-            player_direction = "DOWN"
-        if left != False and (keyboard.is_pressed("left") or keyboard.is_pressed("a")):
+        if keyboard.is_pressed("left"):
             Player.move(-1, None)
-            player_direction = "LEFT"
-            
-        if keyboard.is_pressed('g'):
-            Player.collectItem()
