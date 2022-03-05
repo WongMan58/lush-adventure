@@ -8,6 +8,9 @@ global player_x # Current map column the player is in
 global player_y # Current map row the player is in
 global player_direction
 
+# Set default player direction to up
+player_direction = "UP"
+
 class Player:
     global player_costume
 
@@ -95,7 +98,12 @@ class Player:
         time.sleep(0.12)
 
     def collectItem(): # REDO LATER
-        print("WIP")
+        global player_direction
+        if player_direction == "UP":
+            x_row_info = Map.map[player_x - 1]
+            if x_row_info[player_y] == "F":
+                Inventory.addItem("Flower", 1)
+                Map.replaceObject(player_x - 1, player_y, "G")
 
     def checkKeyboardInput():
         global player_direction
@@ -104,16 +112,16 @@ class Player:
         # Check keyboard player movement
         if up != False and (keyboard.is_pressed("up") or keyboard.is_pressed("w")):
             Player.move(None, 1)
-            player_direction = "up"
+            player_direction = "UP"
         if right != False and (keyboard.is_pressed("right") or keyboard.is_pressed("d")):
             Player.move(1, None)
-            player_direction = "right"
+            player_direction = "RIGHT"
         if down != False and (keyboard.is_pressed("down") or keyboard.is_pressed("s")):
             Player.move(None, -1)
-            player_direction = "down"
+            player_direction = "DOWN"
         if left != False and (keyboard.is_pressed("left") or keyboard.is_pressed("a")):
             Player.move(-1, None)
-            player_direction = "left"
+            player_direction = "LEFT"
             
-        if keyboard.is_pressed('f'):
+        if keyboard.is_pressed('g'):
             Player.collectItem()

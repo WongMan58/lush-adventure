@@ -17,9 +17,9 @@ class Inventory():
         
     def display():
         os.system('cls||clear')
-        print("---------------------------------------")
-        print("Inventory:                     Money:")
-        print("---------------------------------------")
+        print("------------------------------")
+        print("Inventory:")
+        print("------------------------------")
         filled_count = 0
         for item in Inventory.inventory:
             if item[0] == "":

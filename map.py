@@ -1,5 +1,4 @@
-import random
-import math
+import random, math, os
 
 class Map:
     full_width = 48 # Used for generation
@@ -47,19 +46,35 @@ class Map:
         for row in Map.map:
             print(row)
     
+    
     def reset():
         costume_code = []
         for row in range(len(Map.map)):
-            sector_info = list(Map.code[row])
-            for item in range(len(sector_info)):
-                if sector_info[item] == "1":
-                    sector_info[item] = "G"
-                elif sector_info[item] == "2":
-                    sector_info[item] = "█"
-                elif sector_info[item] == "3":
-                    sector_info[item] = "F"
-            sector_info = ''.join(sector_info)
-            costume_code.append(sector_info)
+            current_sector_info = list(Map.code[row])
+            for item in range(len(current_sector_info)):
+                if current_sector_info[item] == "1":
+                    current_sector_info[item] = "G"
+                elif current_sector_info[item] == "2":
+                    current_sector_info[item] = "█"
+                elif current_sector_info[item] == "3":
+                    current_sector_info[item] = "F"
+            current_sector_info  = ''.join(current_sector_info)
+            costume_code.append(current_sector_info)
         Map.map.clear()
         for row in costume_code:
             Map.map.append(row)           
+
+    def replaceObject(pos_x, pos_y, obj):
+        # Turn object into number
+        if obj == "G":
+            obj = "1"
+        elif obj == "█":
+            obj = "2"
+        elif obj == "F":
+            obj = "3"
+        current_row_of_code = list(Map.code[pos_x])
+        current_row_of_code[pos_y] = obj
+        Map.code[pos_x] = ''.join(current_row_of_code)
+        Map.reset()
+        os.system('cls||clear')
+        Map.display()
