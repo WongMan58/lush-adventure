@@ -8,4 +8,4 @@ spawn_y = Map.center_width
 Player.spawn(spawn_x, spawn_y)
 
 while True:
-    checkForUserKeyboardInput()
+    Controls.checkForUserKeyboardInput()
