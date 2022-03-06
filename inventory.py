@@ -9,11 +9,10 @@ class Inventory():
         for space, space_pos in zip(Inventory.inventory, range(len(Inventory.inventory))):
             if space[0] == item:
                 Inventory.inventory[space_pos][1] += amount
-                item_added = True
                 break
             elif space[0] == "":
-                Inventory.inventory[space_pos][0] = item
-                Inventory.inventory[space_pos][1] = amount
+                Inventory.inventory[space_pos] = [item, amount]
+                break
     
     def display():
         os.system('cls||clear')
