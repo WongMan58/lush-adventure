@@ -53,37 +53,40 @@ class Player():
         return up, right, down, left
     
     def collectitem():
+        flower = "F"
+        daisy = "D"
+
         if Player.direction == "UP":
             x_row_info = Map.map[Player.x - 1]
-            if x_row_info[Player.y] == "F":
+            if x_row_info[Player.y] == flower:
                 Inventory.addItem("Flower", 1)
                 Map.replace(Player.x - 1, Player.y, "G", False)
-            elif x_row_info[Player.y] == "L":
-                Inventory.addItem("Lily", 1)
+            elif x_row_info[Player.y] == daisy:
+                Inventory.addItem("Daisy", 1)
                 Map.replace(Player.x - 1, Player.y, "G", False)
         elif Player.direction == "RIGHT":
             x_row_info = Map.map[Player.x]
-            if x_row_info[Player.y + 1] == "F":
+            if x_row_info[Player.y + 1] == flower:
                 Inventory.addItem("Flower", 1)
                 Map.replace(Player.x, Player.y + 1, "G", False)
-            elif x_row_info[Player.y + 1] == "L":
-                Inventory.addItem("Lily", 1)
+            elif x_row_info[Player.y + 1] == daisy:
+                Inventory.addItem("Daisy", 1)
                 Map.replace(Player.x, Player.y + 1, "G", False)
         elif Player.direction == "DOWN":
             x_row_info = Map.map[Player.x + 1]
-            if x_row_info[Player.y] == "F":
+            if x_row_info[Player.y] == flower:
                 Inventory.addItem("Flower", 1)
                 Map.replace(Player.x + 1, Player.y, "G", False)
-            elif x_row_info[Player.y] == "L":
-                Inventory.addItem("Lily", 1)
+            elif x_row_info[Player.y] == daisy:
+                Inventory.addItem("Daisy", 1)
                 Map.replace(Player.x + 1, Player.y, "G", False)
         elif Player.direction == "LEFT":
             x_row_info = Map.map[Player.x]
-            if x_row_info[Player.y - 1] == "F":
+            if x_row_info[Player.y - 1] == flower:
                 Inventory.addItem("Flower", 1)
                 Map.replace(Player.x, Player.y - 1, "G", False)
-            elif x_row_info[Player.y - 1] == "L":
-                Inventory.addItem("Lily", 1)
+            elif x_row_info[Player.y - 1] == daisy:
+                Inventory.addItem("Daisy", 1)
                 Map.replace(Player.x, Player.y - 1, "G", False)
 
     def checkForKeyboardInput():

@@ -21,17 +21,17 @@ class Map():
             single_map_row = []
             for item in range(Map.width): # Variable item is not used
                 current_tile = random.randrange(1, 250)
-                if current_tile <= 210:
+                if current_tile <= 215:
                     current_tile = "G"
                     single_row_code.append("2")
-                elif current_tile > 210 and current_tile <= 235:
+                elif current_tile > 215 and current_tile <= 240:
                     current_tile = "█"
                     single_row_code.append("3")
-                elif current_tile >= 235 and current_tile < 248: 
+                elif current_tile >= 240 and current_tile < 246: 
                     current_tile = "F"
                     single_row_code.append("4")
-                elif current_tile >= 248:
-                    current_tile = "L"
+                elif current_tile >= 246:
+                    current_tile = "D"
                     single_row_code.append("5")
                 single_map_row.append(current_tile)
             single_map_row = ''.join(single_map_row) # Join entire row list together into one string
@@ -57,7 +57,7 @@ class Map():
                 elif current_sector_info[item] == "4":
                     current_sector_info[item] = "F"
                 elif current_sector_info[item] == "5":
-                    current_sector_info[item] = "L"
+                    current_sector_info[item] = "D"
             costume_code.append(''.join(current_sector_info))
         Map.map.clear()
         for row in costume_code:
@@ -74,7 +74,7 @@ class Map():
             obj = "3"
         elif obj == "F":
             obj = "4"
-        elif obj == "L":
+        elif obj == "D":
             obj = "5"
         code = list(Map.code[pos_x])
         if store_old_obj:
