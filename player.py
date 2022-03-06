@@ -23,6 +23,7 @@ class Player():
         if change_y != None:
             Player.x -= change_y
             Map.replace(Player.x, Player.y, Player.costume, True)
+        
         time.sleep(0.12)
     
     def checksides():
@@ -30,17 +31,24 @@ class Player():
         right = False
         down = False
         left = False
-
         stone = "█"
 
-        if Player.x > 0 and Map.map[Player.x - 1][Player.y] != stone:
-            up = True
-        if Player.y < (Map.width - 1) and Map.map[Player.x][Player.y + 1] != stone:
-            right = True
-        if Player.x < (Map.height - 1) and Map.map[Player.x + 1][Player.y] != stone:
-            down = True
-        if Player.y > 0 and Map.map[Player.x][Player.y - 1] != stone:
-            left = True
+        if Player.x > 0:
+            x_row_info = Map.map[Player.x - 1]
+            if x_row_info[Player.y] != stone:
+                up = True
+        if Player.y < (Map.width - 1):
+            x_row_info = Map.map[Player.x]
+            if x_row_info[Player.y + 1] != stone:
+                right = True
+        if Player.x < (Map.height - 1):
+            x_row_info = Map.map[Player.x + 1]
+            if x_row_info[Player.y] != stone:
+                down = True
+        if Player.y > 0:
+            x_row_info = Map.map[Player.x]
+            if x_row_info[Player.y - 1] != stone:
+                left = True
 
         return up, right, down, left
     
@@ -50,37 +58,51 @@ class Player():
             if x_row_info[Player.y] == "F":
                 Inventory.addItem("Flower", 1)
                 Map.replace(Player.x - 1, Player.y, "G", False)
+            elif x_row_info[Player.y] == "L":
+                Inventory.addItem("Lily", 1)
+                Map.replace(Player.x - 1, Player.y, "G", False)
         elif Player.direction == "RIGHT":
             x_row_info = Map.map[Player.x]
             if x_row_info[Player.y + 1] == "F":
                 Inventory.addItem("Flower", 1)
+                Map.replace(Player.x, Player.y + 1, "G", False)
+            elif x_row_info[Player.y + 1] == "L":
+                Inventory.addItem("Lily", 1)
                 Map.replace(Player.x, Player.y + 1, "G", False)
         elif Player.direction == "DOWN":
             x_row_info = Map.map[Player.x + 1]
             if x_row_info[Player.y] == "F":
                 Inventory.addItem("Flower", 1)
                 Map.replace(Player.x + 1, Player.y, "G", False)
+            elif x_row_info[Player.y] == "L":
+                Inventory.addItem("Lily", 1)
+                Map.replace(Player.x + 1, Player.y, "G", False)
         elif Player.direction == "LEFT":
             x_row_info = Map.map[Player.x]
             if x_row_info[Player.y - 1] == "F":
                 Inventory.addItem("Flower", 1)
                 Map.replace(Player.x, Player.y - 1, "G", False)
+            elif x_row_info[Player.y - 1] == "L":
+                Inventory.addItem("Lily", 1)
+                Map.replace(Player.x, Player.y - 1, "G", False)
 
     def checkForKeyboardInput():
         can_go_up, can_go_right, can_go_down, can_go_left = Player.checksides()
 
+        # Player movement
         if keyboard.is_pressed("up") and can_go_up:
             Player.move(None, 1)
             Player.direction = "UP"
-        if keyboard.is_pressed("right") and can_go_right:
+        elif keyboard.is_pressed("right") and can_go_right:
             Player.move(1, None)
             Player.direction = "RIGHT"
-        if keyboard.is_pressed("down") and can_go_down:
+        elif keyboard.is_pressed("down") and can_go_down:
             Player.move(None, -1)
             Player.direction = "DOWN"
-        if keyboard.is_pressed("left") and can_go_left:
+        elif keyboard.is_pressed("left") and can_go_left:
             Player.move(-1, None)
             Player.direction = "LEFT"
-        
-        if keyboard.is_pressed('g'):
+
+        # Other player input
+        if keyboard.is_pressed('c'):
             Player.collectitem()
