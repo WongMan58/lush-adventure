@@ -16,4 +16,4 @@ class Controls():
             elif Controls.inventoryShown:
                 Inventory.hide()
                 Controls.inventoryShown = False
-            time.sleep(0.1)
+            time.sleep(0.15)

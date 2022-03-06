@@ -45,18 +45,26 @@ class Player():
         return up, right, down, left
     
     def collectitem():
-        if Player.direction == "UP" and Map.map[Player.x - 1][Player.y] == "F":
-            Inventory.addItem("Flower", 1)
-            Map.replace(Player.x - 1, Player.y, "G", False)
-        elif Player.direction == "RIGHT" and Map.map[Player.x][Player.y + 1] == "F":
-            Inventory.addItem("Flower", 1)
-            Map.replace(Player.x, Player.y + 1, "G", False)
-        elif Player.direction == "DOWN" and Map.map[Player.x + 1][Player.y] == "F":
-            Inventory.addItem("Flower", 1)
-            Map.replace(Player.x + 1, Player.y, "G", False)
-        elif Player.direction == "LEFT" and Map.map[Player.x][Player.y - 1]:
-            Inventory.addItem("Flower", 1)
-            Map.replace(Player.x, Player.y - 1, "G", False)
+        if Player.direction == "UP":
+            x_row_info = Map.map[Player.x - 1]
+            if x_row_info[Player.y] == "F":
+                Inventory.addItem("Flower", 1)
+                Map.replace(Player.x - 1, Player.y, "G", False)
+        elif Player.direction == "RIGHT":
+            x_row_info = Map.map[Player.x]
+            if x_row_info[Player.y + 1] == "F":
+                Inventory.addItem("Flower", 1)
+                Map.replace(Player.x, Player.y + 1, "G", False)
+        elif Player.direction == "DOWN":
+            x_row_info = Map.map[Player.x + 1]
+            if x_row_info[Player.y] == "F":
+                Inventory.addItem("Flower", 1)
+                Map.replace(Player.x + 1, Player.y, "G", False)
+        elif Player.direction == "LEFT":
+            x_row_info = Map.map[Player.x]
+            if x_row_info[Player.y - 1] == "F":
+                Inventory.addItem("Flower", 1)
+                Map.replace(Player.x, Player.y - 1, "G", False)
 
     def checkForKeyboardInput():
         can_go_up, can_go_right, can_go_down, can_go_left = Player.checksides()
