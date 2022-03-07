@@ -1,25 +1,22 @@
 # Lush Adventure
 
-Lush Adventure is a open-source game about collecting flowers and selling them in shops for money
+Lush Adventure is a open-source game written in python. The goal of this game is the collect flowers and selling them in shops for money
 
-# TODO
-  - [ ] Inventory system (50%)
-  - [x] Rewrite project code
-  - [ ] Item system (10%)
-  - [ ] Fix collision system glitching bug
-  - [x] Fix flower system bug
+# To-Do
+  - [ ] Inventory system
+  - [ ] Item system
+  - [ ] More flowers
   - [ ] Health system
-  - [ ] Game loading
+  - [ ] Game loading and saving
   - [ ] Main menu
   - [ ] Level system
-  - [ ] Bigger maps
-  - [ ] Map scrolling
+  - [ ] Bigger maps and map scrolling
   - [ ] Dungeons
-  - [ ] Enemies
-  - [ ] Shops (About to start)
-  - [ ] Money system (About to start)
-  - [ ] Water and Lava
-  - [ ] Different biomes
-  - [ ] NPCs 
+  - [ ] Enemies (Multiple kinds, Enemy AI)
+  - [ ] Shops
+  - [ ] Biome generation
+  - [ ] NPCs
+  - [ ] Money system
+  - [ ] Better terrain generation (Better values, Water generation, Lava generation)
 
-NOTE: Lush Adventure is a WIP, things may change in the future
+_NOTE: Lush Adventure is a WIP, things may change in the near future_
