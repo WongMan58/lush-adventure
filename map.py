@@ -1,8 +1,8 @@
 import random, math, os
 
 class Map():
-    width = 48
-    height = 19
+    width = 72
+    height = 29
     map = []
     code = []
     center_width = width / 2
@@ -20,17 +20,17 @@ class Map():
             single_row_code = [] # Used to store one line of code
             single_map_row = []
             for item in range(Map.width): # Variable item is not used
-                current_tile = random.randrange(1, 250)
-                if current_tile <= 215:
+                current_tile = random.randrange(1, 500)
+                if current_tile <= 420:
                     current_tile = "G"
                     single_row_code.append("2")
-                elif current_tile > 215 and current_tile <= 240:
+                elif current_tile > 420 and current_tile <= 475:
                     current_tile = "█"
                     single_row_code.append("3")
-                elif current_tile >= 240 and current_tile < 246: 
+                elif current_tile > 475 and current_tile < 485: 
                     current_tile = "F"
                     single_row_code.append("4")
-                elif current_tile >= 246:
+                elif current_tile >= 485:
                     current_tile = "D"
                     single_row_code.append("5")
                 single_map_row.append(current_tile)
