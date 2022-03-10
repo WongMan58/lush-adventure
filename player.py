@@ -13,16 +13,16 @@ class Player():
         Map.generate()
         Player.x = pos_x
         Player.y = pos_y
-        Map.replace(Player.x, Player.y, Player.costume, True)
+        Map.replaceObject(Player.x, Player.y, Player.costume, True)
     
     def move(change_x, change_y):
-        Map.replace(Player.x, Player.y, Map.old_obj, True)
+        Map.replaceObject(Player.x, Player.y, Map.old_obj, True)
         if change_x != None:
             Player.y += change_x
-            Map.replace(Player.x, Player.y, Player.costume, True)
+            Map.replaceObject(Player.x, Player.y, Player.costume, True)
         if change_y != None:
             Player.x -= change_y
-            Map.replace(Player.x, Player.y, Player.costume, True)
+            Map.replaceObject(Player.x, Player.y, Player.costume, True)
         
         time.sleep(0.12)
     
@@ -60,34 +60,34 @@ class Player():
             x_row_info = Map.map[Player.x - 1]
             if x_row_info[Player.y] == flower:
                 Inventory.addItem("Flower", 1)
-                Map.replace(Player.x - 1, Player.y, "G", False)
+                Map.replaceObject(Player.x - 1, Player.y, "G", False)
             elif x_row_info[Player.y] == daisy:
                 Inventory.addItem("Daisy", 1)
-                Map.replace(Player.x - 1, Player.y, "G", False)
+                Map.replaceObject(Player.x - 1, Player.y, "G", False)
         elif Player.direction == "RIGHT":
             x_row_info = Map.map[Player.x]
             if x_row_info[Player.y + 1] == flower:
                 Inventory.addItem("Flower", 1)
-                Map.replace(Player.x, Player.y + 1, "G", False)
+                Map.replaceObject(Player.x, Player.y + 1, "G", False)
             elif x_row_info[Player.y + 1] == daisy:
                 Inventory.addItem("Daisy", 1)
-                Map.replace(Player.x, Player.y + 1, "G", False)
+                Map.replaceObject(Player.x, Player.y + 1, "G", False)
         elif Player.direction == "DOWN":
             x_row_info = Map.map[Player.x + 1]
             if x_row_info[Player.y] == flower:
                 Inventory.addItem("Flower", 1)
-                Map.replace(Player.x + 1, Player.y, "G", False)
+                Map.replaceObject(Player.x + 1, Player.y, "G", False)
             elif x_row_info[Player.y] == daisy:
                 Inventory.addItem("Daisy", 1)
-                Map.replace(Player.x + 1, Player.y, "G", False)
+                Map.replaceObject(Player.x + 1, Player.y, "G", False)
         elif Player.direction == "LEFT":
             x_row_info = Map.map[Player.x]
             if x_row_info[Player.y - 1] == flower:
                 Inventory.addItem("Flower", 1)
-                Map.replace(Player.x, Player.y - 1, "G", False)
+                Map.replaceObject(Player.x, Player.y - 1, "G", False)
             elif x_row_info[Player.y - 1] == daisy:
                 Inventory.addItem("Daisy", 1)
-                Map.replace(Player.x, Player.y - 1, "G", False)
+                Map.replaceObject(Player.x, Player.y - 1, "G", False)
 
     def checkForKeyboardInput():
         can_go_up, can_go_right, can_go_down, can_go_left = Player.checksides()

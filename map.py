@@ -65,7 +65,7 @@ class Map():
         os.system('cls||clear')
         Map.display()
     
-    def replace(pos_x, pos_y, obj, store_old_obj):
+    def replaceObject(pos_x, pos_y, obj, store_old_obj):
         if obj == "@":
             obj = "1"
         elif obj == "G":
@@ -82,3 +82,7 @@ class Map():
         code[pos_y] = obj
         Map.code[pos_x] = ''.join(code)
         Map.update_map()
+    
+    def findObject(pos_x, pos_y):
+        row = Map.map[pos_x]
+        return row[pos_y]
