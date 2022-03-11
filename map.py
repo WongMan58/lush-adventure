@@ -9,6 +9,7 @@ class Map():
     center_height = height / 2
     old_obj = ""
     to_generate = []
+    flowers = ["D", "F"]
 
     if isinstance(center_width, float):
         center_width = math.ceil(center_width)
@@ -84,5 +85,5 @@ class Map():
         Map.update_map()
     
     def findObject(pos_x, pos_y):
-        row = Map.map[pos_x]
-        return row[pos_y]
+        return Map.map[pos_y][pos_x]
+    
