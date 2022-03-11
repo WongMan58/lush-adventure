@@ -1,10 +1,11 @@
-import os, time
+import os
 
 from map import *
 
 class Inventory():
     inventory = [["", 0]] * 20
     inventory[0] = ["Money", 0]
+    inventory[1] = ["Diamonds", 0]
 
     def addItem(item, amount):
         for space, space_pos in zip(Inventory.inventory, range(len(Inventory.inventory))):
@@ -26,9 +27,10 @@ class Inventory():
         print("-------------------------------")
         print("          Inventory:")
         print("-------------------------------\n")
-        print("- %s: %s" % (Inventory.inventory[0][0], Inventory.inventory[0][1]))
+        print("- %s: x%s" % (Inventory.inventory[0][0], Inventory.inventory[0][1]))
+        print("- %s: x%s" % (Inventory.inventory[1][0], Inventory.inventory[1][1]))
         for item, item_pos in zip(Inventory.inventory, range(len(Inventory.inventory))):
-            if item_pos > 0:
+            if item_pos > 1:
                 if item[0] == "":
                     print("- Empty")
                 elif item[0] != "":
