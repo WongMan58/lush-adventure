@@ -27,28 +27,10 @@ class Player():
         time.sleep(0.12)
     
     def checksides():
-        up = False
-        right = False
-        down = False
-        left = False
-        stone = "█"
-
-        if Player.x > 0:
-            x_row_info = Map.map[Player.x - 1]
-            if x_row_info[Player.y] != stone:
-                up = True
-        if Player.y < (Map.width - 1):
-            x_row_info = Map.map[Player.x]
-            if x_row_info[Player.y + 1] != stone:
-                right = True
-        if Player.x < (Map.height - 1):
-            x_row_info = Map.map[Player.x + 1]
-            if x_row_info[Player.y] != stone:
-                down = True
-        if Player.y > 0:
-            x_row_info = Map.map[Player.x]
-            if x_row_info[Player.y - 1] != stone:
-                left = True
+        up = Map.findObject(Player.x - 1, Player.y)
+        right = Map.findObject(Player.x, Player.y + 1)
+        down = Map.findObject(Player.x + 1, Player.y)
+        left = Map.findObject(Player.x, Player.y - 1)
 
         return up, right, down, left
     
@@ -91,18 +73,19 @@ class Player():
 
     def checkForKeyboardInput():
         can_go_up, can_go_right, can_go_down, can_go_left = Player.checksides()
+        stone = "█"
 
         # Player movement
-        if keyboard.is_pressed("up") and can_go_up:
+        if keyboard.is_pressed("up") and can_go_up != stone:
             Player.move(None, 1)
             Player.direction = "UP"
-        elif keyboard.is_pressed("right") and can_go_right:
+        elif keyboard.is_pressed("right") and can_go_right != stone:
             Player.move(1, None)
             Player.direction = "RIGHT"
-        elif keyboard.is_pressed("down") and can_go_down:
+        elif keyboard.is_pressed("down") and can_go_down != stone:
             Player.move(None, -1)
             Player.direction = "DOWN"
-        elif keyboard.is_pressed("left") and can_go_left:
+        elif keyboard.is_pressed("left") and can_go_left != stone:
             Player.move(-1, None)
             Player.direction = "LEFT"
 

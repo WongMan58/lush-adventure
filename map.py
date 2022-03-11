@@ -85,5 +85,6 @@ class Map():
         Map.update_map()
     
     def findObject(pos_x, pos_y):
-        return Map.map[pos_y][pos_x]
+        row = Map.map[pos_x]
+        return row[pos_y]
     
