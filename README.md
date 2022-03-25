@@ -2,6 +2,8 @@
 
 Lush Adventure is a open-source game written in python. The goal of this game is the collect flowers and selling them in shops for money
 
+_IMPORTANT NOTE: This project now is an archive, since it will not be worked on. A game similar to do this will be made soon but don't expect too much yet._
+
 # To-Do
   - [ ] Inventory system
   - [ ] Item system
